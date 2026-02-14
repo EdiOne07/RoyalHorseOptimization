@@ -22,11 +22,3 @@ var int:speed_violation=100*sum(i,j in COURT where i!=j)(horse[i]>0 /\ horse[j]>
 var int: enjoyment= sum(i in COURT where horse[i]>0)(enjoy[i,horse[i]]);
 objective=enjoyment-speed_violation;
 solve maximize objective;
-%The goal is to assign horses to court members so as to maximize the total enjoyment of the riders. However, the assignment must follow some hierarchy, etiquette, and ability-based constraints.
-%Constraints
-
-    %If a horse is faster than another, then:
-     %   The rider must have at least as much ability, or
-      %  The faster horse is unridden, or
-       % Both horses are unridden.
-   % The last (speed–ability) constraint may be violated at a cost of 100 per violation to the objective.
